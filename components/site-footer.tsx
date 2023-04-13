@@ -15,7 +15,7 @@ export function SiteFooter() {
               rel="noreferrer"
               className="font-medium underline underline-offset-4"
             >
-              shadcn
+              voicetechguy1
             </a>
             . Hosted on{" "}
             <a

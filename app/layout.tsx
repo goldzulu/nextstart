@@ -34,8 +34,12 @@ export const metadata = {
       name: "shadcn",
       url: "https://shadcn.com",
     },
+    {
+      name: "goldzulu",
+      url: "https://nextstart.vercel.app",
+    },
   ],
-  creator: "shadcn",
+  creator: "goldzulu",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
     { media: "(prefers-color-scheme: dark)", color: "black" },

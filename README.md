@@ -4,7 +4,7 @@ NextStart is an adaptation of the open source application called Taxonomy built 
 
 > **Warning**
 > This app is a work in progress. I'm building this in public. You can follow the progress on Twitter Original creator and maintainer [@shadcn](https://twitter.com/shadcn).
-> Or follow me at [@voicetechguy](https://twitter.com/voicetechguy1) for my own adaptation of the project
+> Or follow me at [@voicetechguy1](https://twitter.com/voicetechguy1) for my own adaptation of the project
 
 ## Demo
 
@@ -89,4 +89,5 @@ pnpm dev
 ## License
 
 Originally created by [Shad](https://twitter.com/shadcn) at [https://github.com/shadcn/taxonomy](https://github.com/shadcn/taxonomy)
+
 Currently licensed under the [MIT license](https://github.com/goldzulu/nextstart/blob/main/LICENSE.md).
