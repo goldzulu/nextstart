@@ -1,37 +1,37 @@
 import Link from "next/link"
-import { allGuides } from "contentlayer/generated"
+import { allTutorials } from "contentlayer/generated"
 import { compareDesc } from "date-fns"
 
 import { formatDate } from "@/lib/utils"
 import { DocsPageHeader } from "@/components/page-header"
 
 export const metadata = {
-  title: "Guides",
+  title: "Tutorials",
   description:
-    "This section includes end-to-end guides for developing Next.js 13 apps.",
+    "This section includes includes AI Tutorials.",
 }
 
-export default function GuidesPage() {
-  const guides = allGuides
-    // .filter((guide) => guide.published)
-    // .sort((a, b) => {
-    //   return compareDesc(new Date(a.date), new Date(b.date))
-    // })
+export default function TutorialsPage() {
+  const tutorials = allTutorials
+    .filter((tutorial) => tutorial.published)
+    .sort((a, b) => {
+      return compareDesc(new Date(a.title), new Date(b.title))
+    })
 
   return (
     <div className="py-6 lg:py-10">
       <DocsPageHeader
-        heading="Guides"
-        text="This section includes end-to-end guides for developing Next.js 13 apps."
+        heading="tutorials"
+        text="This section includes AI Tutorials."
       />
-      {guides?.length ? (
+      {tutorials?.length ? (
         <div className="grid gap-4 md:grid-cols-2 md:gap-6">
-          {guides.map((guide) => (
+          {tutorials.map((tutorial) => (
             <article
-              key={guide._id}
+              key={tutorial._id}
               className="group relative rounded-lg border border-slate-200 bg-white p-6 shadow-md transition-shadow hover:shadow-lg"
             >
-              {guide.featured && (
+              {tutorial.featured && (
                 <span className="absolute top-4 right-4 rounded-full bg-slate-100 px-3 py-1 text-xs font-medium">
                   Featured
                 </span>
@@ -39,26 +39,26 @@ export default function GuidesPage() {
               <div className="flex flex-col justify-between space-y-4">
                 <div className="space-y-2">
                   <h2 className="text-xl font-medium tracking-tight text-slate-900">
-                    {guide.title}
+                    {tutorial.title}
                   </h2>
-                  {guide.description && (
-                    <p className="text-slate-700">{guide.description}</p>
+                  {tutorial.description && (
+                    <p className="text-slate-700">{tutorial.description}</p>
                   )}
                 </div>
-                {guide.date && (
+                {tutorial.date && (
                   <p className="text-sm text-slate-600">
-                    {formatDate(guide.date)}
+                    {formatDate(tutorial.date)}
                   </p>
                 )}
               </div>
-              <Link href={guide.slug} className="absolute inset-0">
+              <Link href={tutorial.slug} className="absolute inset-0">
                 <span className="sr-only">View</span>
               </Link>
             </article>
           ))}
         </div>
       ) : (
-        <p>No guides published.</p>
+        <p>No tutorials published.</p>
       )}
     </div>
   )

@@ -106,6 +106,18 @@ const components = {
       {...props}
     />
   ),
+  Img: ({
+    className,
+    alt,
+    ...props
+  }: React.ImgHTMLAttributes<HTMLImageElement>) => (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      className={cn("rounded-md border border-slate-200", className)}
+      alt={alt}
+      {...props}
+    />
+  ),
   hr: ({ ...props }) => (
     <hr className="my-4 border-slate-200 md:my-8" {...props} />
   ),

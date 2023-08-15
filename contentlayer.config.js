@@ -141,9 +141,45 @@ export const Page = defineDocumentType(() => ({
   computedFields,
 }))
 
+export const Tutorial = defineDocumentType(() => ({
+  name: "Tutorial",
+  filePathPattern: `tutorials/**/*.mdx`,
+  contentType: "mdx",
+  fields: {
+    title: {
+      type: "string",
+      required: true,
+    },
+    description: {
+      type: "string",
+      required: true,
+    },
+    image: {
+      type: "string",
+      required: true,
+    },
+    authorUsername: {
+      type: "string",
+      required: true,
+    },
+    date: {
+      type: "date",
+    },
+    published: {
+      type: "boolean",
+      default: true,
+    },
+    featured: {
+      type: "boolean",
+      default: false,
+    },
+  },
+  computedFields,
+}))
+
 export default makeSource({
   contentDirPath: "./content",
-  documentTypes: [Page, Doc, Guide, Post, Author],
+  documentTypes: [Page, Doc, Guide, Tutorial, Post, Author],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
