@@ -1,0 +1,81 @@
+---
+title: "Optimizing AutoGPT Agents Primer"
+description: "Your Comprehensive Guide to Leveraging the Agent Protocol and Benchmarking Techniques"
+image: ""
+authorUsername: "goldzulu382"
+---
+
+## Introduction
+
+It's madness out there at the moment especially in the world of AI. More and more AI agents are popping up like mushrooms and all over the place.
+
+I used to be able to keep track of new AI Agents coming up per week but now not only did the number grew exponentially, there even different versions of the same agent!
+
+So how do you keep up with all these new agents? How do you know which one is the best? How do you know which one is the most suitable for your use case?
+
+Well, you can't. Not unless you have a way to benchmark them. But how do you benchmark an agent. Most agents out there have their own unique interfaces and unique way of implementation. 
+
+It has hard to compare something side by side when they are so different. It's like comparing apples and oranges.
+
+This is where, the pioneers of autonomous agents (at the time  of this writing have more than 149k GitHub stars), the people at AutoGPT and the AI Engineering Foundation comes in wit their Agent Protocol.
+
+In this tutorial, we are going to take a deep dive into the agent protocol and benchmarking techniques. At the same time, as a primer to optimisation, I am going to show you some starting points where you can begin optimising you agents.
+
+In all honesty, I am not the best expert on agent optimisation and I am pretty much learning about this field myself. But I am hoping that by sharing what I know, I can help you get started on your optimisation journey and even goes beyond. (Don't forget about me when you make the big bucks after creating your super duper sentient agent that can take over the world!)
+
+### Prerequisites
+
+This is an intermediate to advance level tutorial. It is assume that you already have the environment setup to begin exploring the optimisation process.
+
+Ideally you would have done the following:
+
+* forked and cloned the AutoGPT repository from  Github [AutoGPT](https://github.com/Significant-Gravitas/Auto-GPT.git)
+* installed Python 3.10+
+* installed Poetry
+* installed Flutter 
+
+### Note
+
+The whole AutoGPT repository is still in a state of constant change, so what is shown in this tutorial might be different due to having been chenged or updated. I will try to keep this tutorial as up to date as possible. But if you do find any discrepancies, please let me or the people at LabLab AI know.
+
+### Tutorial Outline
+
+There are three parts to this tutorial.
+
+1. The Agent Protocol - Here, i will cover the basics of the agent protocol, it's structure and tools you can use.
+
+2. Bechmarking - I will cover the basic benchmarking techniques related tools.
+
+3. Prompting and Memory Techniques - I will share some resource to take you further and deeper into prompting and memory technuqyes while covering some common ones.
+
+## The Agent Protocol
+
+The Agent Protocol is built with a vision that one day, all agents have a single standardised communication interface to communicate with.
+
+It is defined in the form of an API Specification, currently [OpenAPI Specification v3](https://swagger.io/docs/specification/about/)
+
+The specification list endpoints, which the agent should expose with predefined input and response models.
+
+There are two main endpoints:
+
+```POST /agent/tasks``` - for creating tasks
+
+```POST /agent/tasks/{id}/steps``` - for triggering next step for the task
+
+The base objects of the protocol are Tasks, Steps and Artifacts
+
+You can find out more about the agent protocol, tasks [here](https://agentprotocol.ai/protocol)
+
+## Benchmarking
+
+## Prompting and Memory Techniques
+
+## Conclusion
+
+Congratulations! There! You got this! You have now successfully completed the tutorial and created your very own autonomous agent using SuperAGI and hopefully learn a thing or two about autonomous agents!
+
+Hope you find this tutorial useful. Love to hear your feedback!
+
+Should you have any questions, feel free to reach out to me on [Twitter](https://twitter.com/voicetechguy1) or in LabLab AI Discord Server. 
+
+Written by [goldzulu](https://linkedin.com/in/goldzulu) for [lablab.ai tutorials](https://lablab.ai/t).
