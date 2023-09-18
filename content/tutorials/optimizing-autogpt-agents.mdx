@@ -17,7 +17,7 @@ Well, you can't. Not unless you have a way to benchmark them. But how do you ben
 
 It has hard to compare something side by side when they are so different. It's like comparing apples and oranges.
 
-This is where, the pioneers of autonomous agents (at the time  of this writing have more than 149k GitHub stars), the people at AutoGPT and the AI Engineering Foundation comes in wit their Agent Protocol.
+This is where, the pioneers of autonomous agents (at the time of this writing AutoGPT have more than 149k GitHub stars), the people at AutoGPT and the AI Engineering Foundation comes in wit their Agent Protocol.
 
 In this tutorial, we are going to take a deep dive into the agent protocol and benchmarking techniques. At the same time, as a primer to optimisation, I am going to show you some starting points where you can begin optimising you agents.
 
@@ -54,6 +54,8 @@ The Agent Protocol is built with a vision that one day, all agents have a single
 
 It is defined in the form of an API Specification, currently [OpenAPI Specification v3](https://swagger.io/docs/specification/about/)
 
+It is worthwhile to note that the specification is currently tech stack agnostic, meaning that it can be implemented in any programming language and framework. Although currently, the reference implementation is in Python.
+
 The specification list endpoints, which the agent should expose with predefined input and response models.
 
 There are two main endpoints:
@@ -64,7 +66,110 @@ There are two main endpoints:
 
 The base objects of the protocol are Tasks, Steps and Artifacts
 
-You can find out more about the agent protocol, tasks [here](https://agentprotocol.ai/protocol)
+The following definition are taken from the [Agent Protocol Documentation](https://agentprotocol.ai/protocol) and reproduced here for convenience.
+
+### Task
+
+A `Task` is specific goals that the agent is working towards. It can be narowly specified or broadly specified.
+
+The `Task` object has the following properties:
+
+| Property           | Type              | Description                                     |
+| ------------------ | ----------------- | ----------------------------------------------- |
+| `task_id`          | `string`          | The ID of the task.                             |
+| `input`            | `string`          | Input prompt for the task.                      |
+| `additional_input` | `object`          | Additional input for the task.                  |
+| `steps`            | `array[Step]`     | The steps of the task.                          |
+| `artifacts`        | `array[Artifact]` | A list of artifacts that the task has produced. |
+
+### Step
+
+A `Step` is a single action that the agent should perform. Each step is triggered by calling the `step` endpoint of the agent. The `Step` object has the following properties:
+
+| Property            | Type              | Description                                                            |
+| ------------------- | ----------------- | ---------------------------------------------------------------------- |
+| `task_id`           | `string`          | The ID of the task.                                                    |
+| `step_id`           | `string`          | The ID of the step.                                                    |
+| `input`             | `string`          | Input prompt for the step.                                             |
+| `additional_input`  | `object`          | Additional input for the step.                                         |
+| `name`              | `string`          | The name of the step.                                                  |
+| `status`            | `enum`            | The status of the step. Possible values are `created` and `completed`. |
+| `output`            | `string`          | Output of the step.                                                    |
+| `additional_output` | `object`          | Additional output of the step.                                         |
+| `artifacts`         | `array[Artifact]` | A list of artifacts that the step has produced.                        |
+| `is_last`           | `boolean`         | Whether this is the last step in the task.                             |
+
+### Artifact
+
+An `Artifact` is a file that the agent has worked with. The `Artifact` object has the following properties:
+
+| Property        | Type     | Description                                             |
+| --------------- | -------- | ------------------------------------------------------- |
+| `artifact_id`   | `string` | The ID of the artifact.                                 |
+| `file_name`     | `string` | Filename of the artifact.                               |
+| `relative_path` | `string` | Relative path of the artifact in the agent's workspace. |
+
+### Endpoints
+
+The Agent Protocol has two main endpoints:
+
+- `/agent/tasks` **[POST]** - This endpoint is used to create a new task for the agent.
+- `/agent/tasks/{task_id}/steps` **[POST]** - This endpoint is used to trigger next step of the task.
+
+To see all endpoints and their descriptions, please refer to the [Endpoints](/endpoints).
+
+### Forge
+
+The Forge is described as a starting point and launchpad for building agents. If you have cloned the AutoGPT repository, you would have seen the Forge folder `autogpts/forge`.
+
+It is a reference implementation of the Agent Protocol in Python that can scafolded out pretty quickly.
+
+#### Agent creation
+
+It is now time to get our hands dirty! To explore further, let's create an agent we can play with. Let's call the agent SkyNet.
+
+Again, you are expected to already know how to create a simple agent using the forge, run the agent using the flutter frontend and perform simple benchmarks.
+
+If you don't, I suggest you take some time to with another beginner level tutorial on how to do this.
+
+For convenience and revision, I will highlight the steps you need to do here at a high level.
+
+At the root of the AutoGPT repository (not the forge directory), execute the followng command 
+
+```sh
+./run agent create skynet
+```
+
+A new directory `autogpts/skynet` will be created with the reference code. 
+
+Carry on with the following to run your agent:
+
+* `cd autogpts/skynet`
+* Install Poetry if you haven't already
+* Run `poetry install` to install the project dependencies
+* Activate the virtual environment with `poetry shell`
+* Make sure you're in the poetry shell
+* Copy the example environment file with `cp .env.example .env`.
+* Open the `.env` file and add your OpenAI API key. 
+* Run your agent with `./run`. This command runs the server and watches for changes.
+
+To verify the agent is running, open Chrome and go to 'http://0.0.0.0:8000'. 
+
+You should see `Welcome to the Auto-GPT Forge` on the page.
+
+#### Agent frontend
+
+The AutoGPT repository comes with a frontend that you can use to interact with your agent. It uses Flutter and is activated by going to the root of the repository and running the following command:
+
+```sh
+./run frontend
+```
+
+After a while, you should see the frontend running in Chrome at http://localhost:5000
+
+ you do not need to use the ready made frontend. The idea of having all the agent initial code, the frontend and the benchmark tools under one repo is to make it as simple as possible for you you to start.
+
+Some of you might prefer to build for instance the agent and the front end in Javascript or TypeScript. You can do that too although you will need to do development work yourself. 
 
 ## Benchmarking
 
