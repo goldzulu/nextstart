@@ -40,5 +40,5 @@ next-env.d.ts
 .contentlayer
 
 # Internal files for testing
-content/tutorials/flow-ai-tool*.mdx
-content/tutorials/autogpt-sample.mdx
+# content/tutorials/flow-ai-tool*.mdx
+# content/tutorials/autogpt-sample.mdx

@@ -1,0 +1,60 @@
+---
+title: "FlowAI Grant Proposal Ref"
+description: "FlowAI Grant Proposal Ref"
+image: ""
+authorUsername: "goldzulu382"
+---
+
+# Flow meets Zephyr and it goes physical
+# Grant category
+* Educational material
+
+# Description
+Wouldn't it be great if you could execute Flow transactions _directly_ from within a bare-bone, physical, hardware platform itself? Using Zephyr RTOS as the underlying operating system, we'll gonna tackle just that.
+
+**What is Zephyr, you might ask?** Well, for those who don't know, it's just [another open-source, highly configurable, real time operating system (RTOS) written in C](https://zephyrproject.org/). It has [support for more then 500 boards](https://docs.zephyrproject.org/latest/boards/index.html) of various architectures such as ARM, x86, RISC-V, MIPS and others (with more being added all the time) with [a thriving community](https://discord.com/invite/Ck7jw53nU2) of more then [1750 contributors](https://github.com/zephyrproject-rtos/zephyr/graphs/contributors), having submitted [more then 84000 commits](https://github.com/zephyrproject-rtos/zephyr/commits/main) and merged [more then 42000 pull requests](https://github.com/zephyrproject-rtos/zephyr/pulls) to date. It's being decorated by 8.4k stars and often time ranks in github's [monthly most trending repositories for the C language](https://github.com/zephyrproject-rtos/zephyr).
+
+So it's safe to say that there's significant developer interest in this project. This also has to do with the fact that, unlike other RTOSs out there, [Zephyr is under the umbrella of the Linux Foundation](https://www.forbes.com/sites/federicoguerrini/2016/02/19/the-internet-of-things-goes-open-source-with-linux-foundations-zephyr-project/). This means that, both its code, and its support are of top-notch quality and won't be going nowhere soon.
+
+In terms of security, an overlapping topic with crypto, Zephyr has [its own active group](https://docs.zephyrproject.org/latest/security/security-overview.html) dedicated to maintaining and improving it. This makes it a good web3 host in general.
+
+All in all, Zephyr is an amazingly well engineered project, perfectly suited to house any decentralized-application. This grant aims to leverage this and bridge the knowledge gap between Flow's resource-oriented paradigm and the physical world.
+
+## Problem statement
+As a developer, I want to learn to write Flow powered applications that run on non-traditional, native, bare-metal hardware.
+
+## Proposed solution
+The deliverables will consist of a well-written Zephyr module project repository that will host a comprehensive demo application. The application will have 2 board targets:
+
+1. [Nordic's nRF7002 development kit](https://www.nordicsemi.com/Products/Development-hardware/nRF7002-DK), a board that has WiFi capability so we can use it to write a closed, self-sustaining, web3 application
+2. a [native POSIX](https://docs.zephyrproject.org/latest/boards/posix/doc/arch_soc.html), intended to be used by people who don't have access to the _nRF7002_ board but still want to play along from home. Zephyr's Native POSIX board targets are great if you want to run your application on the same machine that you use to write the application instead of using a physical board.
+
+This repository will be accompanied by a, human-oriented, medium post (probably spread into 2 parts, for clarity) which will explain everything in good, fun to follow from home, detail.
+
+Of course, emphasis will be put on both the characteristics of Flow and various security aspects of such an application.
+
+The **target audiences** for this grant are:
+
+* C platform-developers who want to develop Flow applications
+* makers who want to use crypto in their projects
+* general, non-embedded, programmers who want to learn something cool and broaden their horizon
+
+I believe that going ubiquitous is an obvious next step to take for Flow and heterogenous hardware platforms powered by Zephyr could be the ones that triggers this avalanche of refreshed interest.
+
+## Impact
+Bringing decentralized-applications closer to the physical world to what is, essentially, an internet-of-things (IoT) development paradigm opens the possibility for new types of applications both for gaming (think of consoles) as well as a plethora of other use-cases.
+
+If this grant is accepted and everything goes well, I do intend to use this experience to pave the way for **developing a full-fledged, developer-oriented, flow-sdk C library** especially tailored for usage in Zephyr applications.
+
+# Milestones and funding
+Milestone	Deliverables	Timeline	Risks	USD proposal
+1 - R&D and crafting of contracts	Define an interesting user-journey to craft, write the smart contracts for it and research Flow's logic for serialization and gRPC execution	1 week	-	1500
+2 - Zephyr app	A native Zephyr demo app able to be run both natively and on physical hardware, capable of interacting with Flow via the API defined at phase 1	2 weeks	-	3000
+3 - Article	A well-written, well-edited, article that details the steps required to make this Zephyr-Flow symbiosis possible	1 week	-	1500
+4 - Promotion	Spreading the good word to other Zephyr community developers as well as on other social media channels	-	-	-
+Total funding proposed: 6000 USD
+
+# Team
+Name	Role	Bio	Contact
+Victor	Senior All-In-One Software Engineer	18 years of software developer experience in both low and high level languages. Long-time AI fan. Enthusiastic spreader and sharer of good quality knowledge. Since I can remember, embedded development has occupied a special place in my heart.	[adascalitei.victor@gmail.com](mailto:adascalitei.victor@gmail.com)
+
