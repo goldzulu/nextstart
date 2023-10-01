@@ -38,3 +38,7 @@ next-env.d.ts
 
 .vscode
 .contentlayer
+
+# Internal files for testing
+content/tutorials/flow-ai-tool*.mdx
+content/tutorials/autogpt-sample.mdx
